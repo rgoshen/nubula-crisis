@@ -38,3 +38,21 @@ def display_game_logo():
                         ` | | | '
                           ` | '
     ''')
+    welcome_prompt()
+
+def welcome_prompt():
+    print()
+    print('''\t\tWelcome to Nebula Crisis: Overlord Showdown!
+    
+        Your mission is to navigate through the spaceship and
+        collect six critical items needed to activate the ship’s
+        defense system. These items are scattered across various rooms,
+        but beware—the deadly Alien Overlord is somewhere aboard the ship,
+        and if you encounter it before gathering all the items, 
+        it will be game over!
+                            -------------------------
+        Moves:\t'go {direction}' (travel north, south, east, or west)
+              \t'get {item}' (add nearby item to inventory)
+              \t'exit (quits the game)'
+          ''')
+    input('Press any key to continue...')
