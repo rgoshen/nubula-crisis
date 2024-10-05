@@ -53,6 +53,7 @@ def welcome_prompt():
                             -------------------------
         Moves:\t'go {direction}' (travel north, south, east, or west)
               \t'get {item}' (add nearby item to inventory)
+              \t'inventory' (shows a list of all your items)
               \t'exit (quits the game)'
           ''')
     input('Press any key to continue...')
