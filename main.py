@@ -1,4 +1,5 @@
-import welcome
+def print_hi(name):
+    print(f'Hi, {name}')
 
 if __name__ == '__main__':
-    welcome.display_game_logo()
+    print_hi('PyCharm')
