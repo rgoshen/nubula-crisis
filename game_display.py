@@ -1,13 +1,12 @@
-def print_player(current_room, player_inventory):
+def print_player(current_room):
     """
-    Displays the player's current room and their inventory.
+    Displays the player's current room.
 
     Parameters:
         current_room (str): The name of the room the player is currently in.
-        player_inventory (list): A list of items the player has collected.
     """
     print()
-    print(f"You are in the {current_room}\n Inventory: {player_inventory}\n{'-' * 27}")
+    print(f"You are in the {current_room}\n {'-' * 27}")
 
 def display_room_info(rooms, current_room):
     """

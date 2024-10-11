@@ -29,7 +29,7 @@ def game_play():
 
     while True:
         # Print player's location and inventory
-        game_display.print_player(current_room, player_inventory)
+        game_display.print_player(current_room)
         game_display.display_room_info(spacecraft_rooms, current_room)
 
         # Prompt the player for action
@@ -44,6 +44,10 @@ def game_play():
         elif action.startswith('get '):
             item_name = action.split('get ', 1)[1].strip()
             item_management.get_item(current_room, spacecraft_rooms, item_name, player_inventory)
+
+        # Handle the 'inventory' command to view player's inventory
+        elif action == 'inventory':
+            item_management.display_inventory(player_inventory)
 
         # Handle the 'exit' command to quit the game
         elif action == 'exit':
