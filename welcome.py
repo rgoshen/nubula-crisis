@@ -1,4 +1,14 @@
 def display_game_logo():
+    """
+    Displays the ASCII art logo for the game and an alien figure.
+
+    The function prints out the game's title, "Nebula Crisis: Overlord Showdown,"
+    in stylized ASCII art using text generated from an ASCII text generator.
+    Additionally, it displays an alien figure in ASCII art to set the theme for the game.
+
+    After displaying the logo and the alien figure, the function calls the
+    welcome_prompt() function to show the game's welcome message and instructions.
+    """
     print()
     # Ascii Text Generator https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
     print(r'''
@@ -41,6 +51,15 @@ def display_game_logo():
     welcome_prompt()
 
 def welcome_prompt():
+    """
+    Displays the welcome message and game instructions to the player.
+
+    This function prints out a brief introduction to the game "Nebula Crisis: Overlord Showdown,"
+    explaining the player's mission and the basic game mechanics. It outlines how the player can
+    move between rooms, collect items, view their inventory, and exit the game.
+
+    After displaying the instructions, it waits for the player to press any key to continue the game.
+    """
     print()
     print('''\t\tWelcome to Nebula Crisis: Overlord Showdown!
     
