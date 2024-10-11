@@ -14,7 +14,6 @@ def move_player(rooms, current_room, direction):
     if direction in rooms[current_room]['directions']:
         # Move to the new room
         new_room = rooms[current_room]['directions'][direction]
-        print(f'You move to the {new_room}.')
         return new_room
     else:
         # Invalid direction, stay in the current room
