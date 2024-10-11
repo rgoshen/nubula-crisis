@@ -2,27 +2,33 @@
 
 ## Overview
 
-**Nebula Crisis: Overlord Showdown** is a text-based adventure game set aboard an intergalactic spaceship overrun by a
-deadly Alien Overlord. As the player, your mission is to explore the ship, gather critical items, and activate the
-ship's defense system before the Alien Overlord catches you. Each playthrough is unique due to randomized starting
-positions, item locations, and the alien's whereabouts, ensuring unpredictability and replayability.
+**Nebula Crisis: Overlord Showdown** is a text-based adventure game set aboard an intergalactic spaceship that has been
+overrun by a deadly Alien Overlord. As the player, your mission is to explore the ship, gather critical items, and
+activate the ship’s defense system before the Alien Overlord catches you. Each playthrough is unique due to randomized
+starting positions, item locations, and the alien’s whereabouts, ensuring unpredictability and replayability.
 
 ## Gameplay
 
-- You begin the game in a random room on the spaceship.
-- Your mission is to explore the spaceship, collect six essential items, and activate the ship's defense system before
-  encountering the Alien Overlord.
-- The six essential items are:
-    - **Power Cell**
-    - **Shield Generator**
-    - **Command Keycard**
-    - **Energy Converter**
-    - **Nano Repair Kit**
-    - **Laser Cannon Blueprint**
+You begin the game in a random room on the spaceship, while the Alien Overlord starts in another room. Your objective
+is to navigate through different rooms, collect six essential items, and activate the ship’s defense system before
+encountering the Alien Overlord.
 
-- The location of these items, as well as the Alien Overlord, will be different in every playthrough.
-- If you enter the room where the Alien Overlord is hiding before collecting all the necessary items, you will be
-  defeated, and the game will end.
+The six essential items are:
+
+- Power Cell
+- Shield Generator
+- Command Keycard
+- Energy Converter
+- Nano Repair Kit
+- Laser Cannon Blueprint
+
+The location of these items, as well as the Alien Overlord, will change with every playthrough. If you encounter the
+Alien Overlord before collecting all the necessary items, you will be defeated, and the game will end.
+
+### Clues and Danger:
+
+- As you explore the spaceship, you may receive hints if the Alien Overlord is in an adjacent room. Pay attention to
+  these clues to avoid entering dangerous areas unprepared!
 
 ## Features
 
@@ -65,10 +71,10 @@ positions, item locations, and the alien's whereabouts, ensuring unpredictabilit
 - Movement:
     - go [direction] – Moves the player to a new room. (e.g., go north)
 - Item Management:
-    - take item – Collects the item in the current room.
+    - get [item] – Collects the item in the current room.
     - inventory – Shows a list of all collected items.
 - Quit:
-    - quit – Ends the game.
+    - exit – Ends the game.
 
 ## Rooms in the Game
 
@@ -88,6 +94,7 @@ These rooms will be explored as you attempt to find the six critical items while
 - Adding more rooms and challenges.
 - Implementing a combat system for direct confrontation with the Alien Overlord.
 - Adding different types of aliens for increased difficulty.
+- Introducing a health or stamina system for the player.
 
 ## License
 
