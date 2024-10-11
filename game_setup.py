@@ -107,4 +107,6 @@ def game_initialize():
     # Randomize player start, alien start, and item placement
     player_start_room, alien_start_room = randomize_game(spacecraft_rooms, items)
 
+    print("alien room:", alien_start_room) # TODO: remove this
+
     return player_start_room, spacecraft_rooms, alien_start_room

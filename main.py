@@ -3,6 +3,7 @@ import welcome
 import room_navigation
 import game_display
 import item_management
+import game_logic
 
 def game_play():
     """
@@ -28,6 +29,12 @@ def game_play():
     player_inventory = []
 
     while True:
+        # Check if the player encounters the Alien Overlord
+        if game_logic.check_alien_encounter(current_room, alien_room):
+            print("The Alien Overlord is in this room! Be careful!")
+            # TODO: implement game over sequence here
+
+
         # Print player's location and inventory
         game_display.print_player(current_room)
         game_display.display_room_info(spacecraft_rooms, current_room)
