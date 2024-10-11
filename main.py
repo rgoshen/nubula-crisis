@@ -18,21 +18,22 @@ def game_play():
 
     This function relies on other modules for displaying game information, navigating between rooms,
     and managing game setup.
-
-    Parameters:
-        None
-
-    Returns:
-        None
     """
-    current_room, spacecraft_rooms, alien_room = game_setup.game_initialize()
+    current_room, spacecraft_rooms, alien_room, placed_items = game_setup.game_initialize()
     player_inventory = []
 
     while True:
         # Check if the player encounters the Alien Overlord
         if game_logic.check_alien_encounter(current_room, alien_room):
-            print("The Alien Overlord is in this room! Be careful!")
-            # TODO: implement game over sequence here
+            if game_logic.check_all_items_collected(player_inventory, placed_items):
+                print(
+                    "\nYou have collected all the required items and activated the ship's defense system!")
+                print("Congratulations! You have defeated the Alien Overlord and saved the ship!")
+            else:
+                missing_items = set(placed_items) - set(player_inventory)  # Calculate the missing items
+                print("\nOh no! ZAP! ZAP! The Alien Overlord has won and taken over the ship.")
+                print(f"You failed to collect the following items: {', '.join(missing_items)}. Game Over!")
+            break  # Exit the game loop
 
 
         # Print player's location and inventory

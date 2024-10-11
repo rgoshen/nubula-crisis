@@ -5,6 +5,11 @@ def randomize_game(rooms, items):
     """
     Randomly assigns the player's starting room, the Alien Overlord's starting room,
     and places the six items in random rooms, excluding the starting rooms of the player and alien.
+
+    Returns:
+        player_start_room (str): The player's starting room.
+        alien_start_room (str): The Alien Overlord's starting room.
+        placed_items (list): A list of items that were placed in the rooms.
     """
     room_names = list(rooms.keys())
 
@@ -20,19 +25,28 @@ def randomize_game(rooms, items):
     available_rooms = [room for room in room_names if room not in [player_start_room, alien_start_room]]
 
     # Shuffle and assign items to available rooms
+    placed_items = []  # Track items that are placed in rooms
     random.shuffle(items)
     for i, room in enumerate(available_rooms[:len(items)]):
         rooms[room]['Item'] = items[i]
+        placed_items.append(items[i])  # Add placed item to the list
 
-    return player_start_room, alien_start_room
+    print("alien:", alien_start_room)
+
+    return player_start_room, alien_start_room, placed_items
 
 def game_initialize():
     """
     Initializes the game by setting up the rooms, items, and randomly assigning
     the player and alien starting locations, as well as randomizing item placements.
+
+    Returns:
+        current_room (str): The player's starting room.
+        spacecraft_rooms (dict): The dictionary of rooms in the game.
+        alien_room (str): The room where the Alien Overlord is located.
+        placed_items (list): A list of items that were placed in the rooms.
     """
     utilities.clear()
-
     print('Game initializing...')
 
     spacecraft_rooms = {
@@ -105,8 +119,6 @@ def game_initialize():
              'Shield Generator']
 
     # Randomize player start, alien start, and item placement
-    player_start_room, alien_start_room = randomize_game(spacecraft_rooms, items)
+    player_start_room, alien_start_room, placed_items = randomize_game(spacecraft_rooms, items)
 
-    print("alien room:", alien_start_room) # TODO: remove this
-
-    return player_start_room, spacecraft_rooms, alien_start_room
+    return player_start_room, spacecraft_rooms, alien_start_room, placed_items
