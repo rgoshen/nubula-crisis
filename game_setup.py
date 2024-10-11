@@ -16,10 +16,13 @@ def randomize_game(rooms, items):
     # Randomly assign player's starting room
     player_start_room = random.choice(room_names)
 
+    # List of valid starting locations for the Alien Overlord (excluding Medical Bay and Storage Bay)
+    valid_alien_rooms = [room for room in room_names if room not in ['Medical Bay', 'Storage Bay']]
+
     # Randomly assign Alien Overlord's starting room (must be different from player start)
-    alien_start_room = random.choice(room_names)
+    alien_start_room = random.choice(valid_alien_rooms)
     while alien_start_room == player_start_room:
-        alien_start_room = random.choice(room_names)
+        alien_start_room = random.choice(valid_alien_rooms)
 
     # List of rooms where items can be placed (excluding player and alien start rooms)
     available_rooms = [room for room in room_names if room not in [player_start_room, alien_start_room]]
@@ -30,8 +33,6 @@ def randomize_game(rooms, items):
     for i, room in enumerate(available_rooms[:len(items)]):
         rooms[room]['Item'] = items[i]
         placed_items.append(items[i])  # Add placed item to the list
-
-    print("alien:", alien_start_room)
 
     return player_start_room, alien_start_room, placed_items
 
@@ -120,5 +121,7 @@ def game_initialize():
 
     # Randomize player start, alien start, and item placement
     player_start_room, alien_start_room, placed_items = randomize_game(spacecraft_rooms, items)
+
+    print("alien room:", alien_start_room) #TODO: remove this
 
     return player_start_room, spacecraft_rooms, alien_start_room, placed_items
