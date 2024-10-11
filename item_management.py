@@ -24,17 +24,19 @@ def get_item(current_room, rooms, item_name, player_inventory):
         return False
 
 
-def display_inventory(player_inventory):
+def display_inventory(player_inventory, total_items):
     """
-    Displays the player's inventory.
+    Displays the player's inventory and shows how many items they have out of the total possible items.
 
     Parameters:
-        player_inventory (list): A list containing the player's current items.
-
-    Returns:
-        None
+        player_inventory (list): The list containing the player's current items.
+        total_items (int): The total number of collectible items in the game.
     """
+    collected_items = len(player_inventory)
+
+    print(f"\nInventory ({collected_items}/{total_items} items collected):")
+
     if player_inventory:
-        print(f"Your inventory contains: {', '.join(player_inventory)}")
+        print(f"Items: {', '.join(player_inventory)}")
     else:
         print("Your inventory is empty.")

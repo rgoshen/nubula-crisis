@@ -22,6 +22,9 @@ def game_play():
     current_room, spacecraft_rooms, alien_room, placed_items = game_setup.game_initialize()
     player_inventory = []
 
+    # Total number of items in the game
+    total_items = len(placed_items)
+
     while True:
         # Check if the player encounters the Alien Overlord
         if game_logic.check_alien_encounter(current_room, alien_room):
@@ -55,7 +58,7 @@ def game_play():
 
         # Handle the 'inventory' command to view player's inventory
         elif action == 'inventory':
-            item_management.display_inventory(player_inventory)
+            item_management.display_inventory(player_inventory, total_items)
 
         # Handle the 'exit' command to quit the game
         elif action == 'exit':
