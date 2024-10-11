@@ -7,6 +7,31 @@ def print_player(current_room, player_inventory):
     print()
     print(f"You are in the {current_room}\n Inventory: {player_inventory}\n{'-' * 27}")
 
+def display_room_info(rooms, current_room):
+    """
+    Displays the description, directions, and available item in the current room.
+
+    Parameters:
+        rooms (dict): A dictionary mapping each room to its possible exits (directions).
+        current_room (str): The name of the current room.
+    """
+    room_info = rooms[current_room]
+
+    print()
+
+    # Display the room description
+    print(room_info['description'])
+
+    # Display possible directions
+    print("You can move in the following directions: ", ", ".join(room_info['directions'].keys()))
+
+    # Display the item in the room (if any)
+    if room_info['Item']:
+        print(f"You see a {room_info['Item']} here.")
+        print()
+    else:
+        print("There are no items in this room.")
+        print()
 
 def game_initialize():
     utilities.clear()
@@ -14,61 +39,69 @@ def game_initialize():
     print('Game initializing...')
 
     spacecraft_rooms = {
-        'Crew Quarters': {
-            'directions': {'South': 'Medical Bay'},
-            'Item': None
+    'Crew Quarters': {
+        'description': "The Crew Quarters is where the ship's crew used to rest. It's quiet now, but something seems off.",
+        'directions': {'South': 'Medical Bay'},
+        'Item': None
+    },
+    'Medical Bay': {
+        'description': "This is the Medical Bay, full of equipment to treat injuries.",
+        'directions': {
+            'North': 'Crew Quarters',
+            'South': 'Control Room',
+            'East': 'Observation Deck'
         },
-        'Medical bay': {
-            'directions': {
-                'North': 'Crew Quarters',
-                'South': 'Control Room',
-                'East': 'Observation Deck'
-            },
-            'Item': 'Nano Repair Kit'
+        'Item': 'Nano Repair Kit'
+    },
+    'Control Room': {
+        'description': "The Control Room is the heart of the ship. There are flashing lights and a strange hum.",
+        'directions': {
+            'North': 'Medical Bay',
+            'South': 'Engine Room'
         },
-        'Control Room': {
-            'directions': {
-                'North': 'Medical Bay',
-                'South': 'Engine Room'
-            },
-            'Item': 'Power Cell'
+        'Item': 'Power Cell'
+    },
+    'Engine Room': {
+        'description': "You are in the Engine Room. The sound of machinery surrounds you.",
+        'directions': {
+            'North': 'Control Room',
+            'East': 'Storage Bay'
         },
-        'Engine Room': {
-            'directions': {
-                'North': 'Control Room',
-                'East': 'Storage Bay'
-            },
-            'Item': 'Energy Converter'
+        'Item': 'Energy Converter'
+    },
+    'Observation Deck': {
+        'description': "The Observation Deck provides a view of the stars.",
+        'directions': {
+            'West': 'Medical Bay',
+            'South': 'Weaponry Room',
         },
-        'Observation Deck': {
-            'directions': {
-                'West': 'Medical Bay',
-                'South': 'Weaponry Room',
-            },
-            'Item': 'Command Key Card'
+        'Item': 'Command Key Card'
+    },
+    'Weaponry Room': {
+        'description': "This is the Weaponry Room, filled with tools of defense.",
+        'directions': {
+            'North': 'Observation Deck',
+            'South': 'Storage Bay',
         },
-        'Weaponry Room': {
-            'directions': {
-                'North': 'Observation Deck',
-                'South': 'Storage Bay',
-            },
-            'Item': 'Laser Cannon Blueprint'
+        'Item': 'Laser Cannon Blueprint'
+    },
+    'Storage Bay': {
+        'description': "The Storage Bay is packed with supplies.",
+        'directions': {
+            'North': 'Weaponry Room',
+            'South': 'Cargo Hold',
+            'West': 'Engine Room',
         },
-        'Storage Bay': {
-            'directions': {
-                'North': 'Weaponry Room',
-                'South': 'Cargo Hold',
-                'West': 'Engine Room',
-            },
-            'Item': 'Shield Generator'
+        'Item': 'Shield Generator'
+    },
+    'Cargo Hold': {
+        'description': "The Cargo Hold is dark and eerie.",
+        'directions': {
+            'North': 'Storage Bay',
         },
-        'Cargo Hold': {
-            'directions': {
-                'North': 'Storage Bay',
-            },
-            'item': None
-        }
+        'Item': None
     }
+}
 
     # set starting room
     current_room = 'Crew Quarters'
@@ -84,6 +117,7 @@ def game_play():
 
     while True:
         print_player(current_room, player_inventory)
+        display_room_info(spacecraft_rooms, current_room)
 
         action = input('Enter your move (go North, South, East, West): ').lower()
 
