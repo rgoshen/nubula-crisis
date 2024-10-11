@@ -119,7 +119,7 @@ def game_play():
         print_player(current_room, player_inventory)
         display_room_info(spacecraft_rooms, current_room)
 
-        action = input('Enter your move (go North, South, East, West): ').lower()
+        action = input('Enter your move (go North, South, East, West or Exit): ').lower()
 
         # Check if the action is a move command
         if action.startswith('go '):
