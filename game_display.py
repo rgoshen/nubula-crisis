@@ -33,3 +33,33 @@ def display_room_info(rooms, current_room):
     else:
         print("There are no items in this room.")
         print()
+
+def get_dynamic_prompt(current_room, rooms):
+    """
+    Generates a dynamic prompt based on the current room.
+
+    This function checks the available directions in the current room,
+    whether there is an item in the room, and always includes the 'inventory' and 'exit' options.
+
+    Parameters:
+        current_room (str): The name of the room the player is currently in.
+        rooms (dict): A dictionary of rooms with their details.
+
+    Returns:
+        str: The dynamically generated prompt.
+    """
+    room_directions = rooms[current_room]['directions']
+    available_directions = ", ".join(room_directions.keys())
+
+    # Start the prompt with available directions
+    prompt = f"Enter your move (go {available_directions}"
+
+    # Add specific item action if there is an item in the room
+    if rooms[current_room]['Item']:
+        item = rooms[current_room]['Item']
+        prompt += f", get {item}"
+
+    # Always include inventory and exit options
+    prompt += ", inventory, exit): "
+
+    return prompt

@@ -46,8 +46,11 @@ def game_play():
         # Check if alien is in an adjacent room and give clue (only if the player has not encountered the alien)
         game_logic.check_adjacent_rooms_for_alien(current_room, spacecraft_rooms, alien_room)
 
-        # Prompt the player for action
-        action = input('Enter your move (go North, South, East, West or get <item> or Exit): ').lower()
+        # Get the dynamic prompt based on the current room
+        prompt = game_display.get_dynamic_prompt(current_room, spacecraft_rooms)
+
+        # Get the player's action
+        action = input(prompt).lower()
 
         # Handle the 'go' command for movement
         if action.startswith('go '):
